@@ -28,7 +28,7 @@ texture = ExtResource("1_4wjl7")
 position = Vector2(814, -858)
 
 [node name="player" parent="." instance=ExtResource("2_kxsj1")]
-position = Vector2(611, 688)
+position = Vector2(-378, 68)
 
 [node name="floor" type="StaticBody2D" parent="."]
 
@@ -83,7 +83,7 @@ position = Vector2(1159, 31)
 position = Vector2(1355, 31)
 
 [node name="platform13" parent="platforms" instance=ExtResource("3_g0m0p")]
-position = Vector2(1561, 36)
+position = Vector2(1561, 31)
 
 [node name="platform14" parent="platforms" instance=ExtResource("3_g0m0p")]
 position = Vector2(1675, -657)
@@ -119,5 +119,20 @@ position = Vector2(1319, -1026)
 position = Vector2(1523, -1085)
 rotation = -0.598648
 
+[node name="platform25" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(-2741, -1387)
+
 [node name="enemy" parent="." instance=ExtResource("4_p4fbm")]
-position = Vector2(-990, 575)
+position = Vector2(1179, -110)
+
+[node name="enemy2" parent="." instance=ExtResource("4_p4fbm")]
+position = Vector2(-1396, 640)
+
+[node name="enemy3" parent="." instance=ExtResource("4_p4fbm")]
+position = Vector2(753, -928)
+
+[node name="enemy4" parent="." instance=ExtResource("4_p4fbm")]
+position = Vector2(-2002, -933)
+
+[node name="enemy5" parent="." instance=ExtResource("4_p4fbm")]
+position = Vector2(1636, 673)

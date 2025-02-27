@@ -24,3 +24,17 @@ position = Vector2(-78, 29)
 
 [node name="RayCast2D2" type="RayCast2D" parent="CharacterBody2D"]
 position = Vector2(81, 28)
+
+[node name="RayCast2D3" type="RayCast2D" parent="CharacterBody2D"]
+position = Vector2(-71, 17)
+target_position = Vector2(-1, 0)
+
+[node name="RayCast2D4" type="RayCast2D" parent="CharacterBody2D"]
+position = Vector2(71, 16)
+target_position = Vector2(1, 0)
+
+[node name="Timer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="CharacterBody2D/Timer" to="CharacterBody2D" method="_on_timer_timeout"]

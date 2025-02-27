@@ -44,10 +44,10 @@ func _physics_process(delta: float) -> void:
 	if isdashing:
 		velocity.x = direction * DASH_SPEED * delta
 		velocity.y = directionvert * DASH_SPEED *delta
-		skew = direction
+		# skew = direction
 	else:
 		velocity.x = direction * SPEED * delta
-		skew = direction * .5
+		# skew = direction * .5
 	
 	if Input.is_action_just_pressed("dash"):
 		dash(direction)
