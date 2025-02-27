@@ -1,0 +1,123 @@
+[gd_scene load_steps=8 format=3 uid="uid://wfy7wifkr46h"]
+
+[ext_resource type="Texture2D" uid="uid://bq7srxqn8d0mi" path="res://assets/backgtound.jpg" id="1_4wjl7"]
+[ext_resource type="PackedScene" uid="uid://c6c5c8ttr76e7" path="res://player.tscn" id="2_kxsj1"]
+[ext_resource type="PackedScene" uid="uid://tihqd1eit1kq" path="res://platform.tscn" id="3_g0m0p"]
+[ext_resource type="PackedScene" uid="uid://dn7jm73ai5osl" path="res://enemy.tscn" id="4_p4fbm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gol5b"]
+size = Vector2(5999, 1018)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vvoss"]
+normal = Vector2(-0.999882, -0.0153828)
+distance = -2999.51
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d5jj5"]
+normal = Vector2(1, 0)
+distance = -2997.0
+
+[node name="Level" type="Node2D"]
+metadata/_edit_vertical_guides_ = [-2992.0, 3008.0]
+metadata/_edit_horizontal_guides_ = [-1798.0, 1234.0]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(10, 10)
+texture = ExtResource("1_4wjl7")
+
+[node name="platform16" parent="Sprite2D" instance=ExtResource("3_g0m0p")]
+position = Vector2(814, -858)
+
+[node name="player" parent="." instance=ExtResource("2_kxsj1")]
+position = Vector2(611, 688)
+
+[node name="floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2(-7.5, 1285)
+shape = SubResource("RectangleShape2D_gol5b")
+
+[node name="walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
+shape = SubResource("WorldBoundaryShape2D_vvoss")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="walls"]
+shape = SubResource("WorldBoundaryShape2D_d5jj5")
+
+[node name="platforms" type="Node2D" parent="."]
+
+[node name="platform" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(-363, 520)
+
+[node name="platform2" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(-161, 520)
+
+[node name="platform3" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(53, 520)
+
+[node name="platform4" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(265, 520)
+
+[node name="platform5" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(480, 520)
+
+[node name="platform6" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(-594, 183)
+
+[node name="platform7" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(-383, 183)
+
+[node name="platform8" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(-180, 183)
+
+[node name="platform9" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(-826, -266)
+
+[node name="platform10" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(-1041, -269)
+
+[node name="platform11" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(1159, 31)
+
+[node name="platform12" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(1355, 31)
+
+[node name="platform13" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(1561, 36)
+
+[node name="platform14" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(1675, -657)
+
+[node name="platform15" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(1884, -657)
+
+[node name="platform16" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(752, -830)
+
+[node name="platform17" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(-397, -932)
+
+[node name="platform18" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(-1608, -784)
+
+[node name="platform19" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(-1810, -784)
+
+[node name="platform20" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(-2011, -784)
+
+[node name="platform21" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(-2213, -784)
+
+[node name="platform22" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(-1924, -468)
+
+[node name="platform23" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(1319, -1026)
+
+[node name="platform24" parent="platforms" instance=ExtResource("3_g0m0p")]
+position = Vector2(1523, -1085)
+rotation = -0.598648
+
+[node name="enemy" parent="." instance=ExtResource("4_p4fbm")]
+position = Vector2(-990, 575)
