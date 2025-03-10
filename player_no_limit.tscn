@@ -1,36 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6c5c8ttr76e7"]
+[gd_scene load_steps=6 format=3 uid="uid://4rke34waufhs"]
 
-[ext_resource type="Script" uid="uid://eeochdnq603v" path="res://scripts/player.gd" id="1_hqtel"]
-[ext_resource type="Texture2D" uid="uid://bx54gdekv6ux4" path="res://assets/icon.svg" id="1_kdddo"]
-[ext_resource type="Script" uid="uid://buinp04htrcsj" path="res://scripts/player/character_body_2d.gd" id="1_x4mbo"]
-[ext_resource type="Texture2D" uid="uid://diguuv5a66skn" path="res://assets/godotLogo.png" id="3_cta8h"]
+[ext_resource type="Script" uid="uid://buinp04htrcsj" path="res://scripts/player/character_body_2d.gd" id="1_ds11u"]
+[ext_resource type="Texture2D" uid="uid://bx54gdekv6ux4" path="res://assets/icon.svg" id="2_3yt18"]
+[ext_resource type="Texture2D" uid="uid://diguuv5a66skn" path="res://assets/godotLogo.png" id="3_cfwxl"]
+[ext_resource type="PackedScene" uid="uid://2xbd1xlhiow1" path="res://conponents/attack_component.tscn" id="3_kgpfv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4uv6h"]
 size = Vector2(121, 119)
 
-[node name="player" type="Node2D"]
-position = Vector2(1, 0)
-script = ExtResource("1_hqtel")
+[node name="playerNoLimit" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("1_x4mbo")
+script = ExtResource("1_ds11u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_4uv6h")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("1_kdddo")
+texture = ExtResource("2_3yt18")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(2, -4)
 scale = Vector2(10, 10)
-zoom = Vector2(0.4, 0.4)
-limit_left = -2992
-limit_top = -1798
-limit_right = 3000
+zoom = Vector2(0.6, 0.6)
 limit_bottom = 1235
 position_smoothing_enabled = true
+
+[node name="hitCooldown" type="Timer" parent="CharacterBody2D"]
+one_shot = true
+
+[node name="AttackComponent" parent="CharacterBody2D" instance=ExtResource("3_kgpfv")]
 
 [node name="dashtimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -52,28 +52,29 @@ grow_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="UI/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_cta8h")
+texture = ExtResource("3_cfwxl")
 expand_mode = 2
 
 [node name="TextureRect2" type="TextureRect" parent="UI/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_cta8h")
+texture = ExtResource("3_cfwxl")
 expand_mode = 2
 
 [node name="TextureRect3" type="TextureRect" parent="UI/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_cta8h")
+texture = ExtResource("3_cfwxl")
 expand_mode = 2
 
 [node name="TextureRect4" type="TextureRect" parent="UI/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_cta8h")
+texture = ExtResource("3_cfwxl")
 expand_mode = 2
 
 [node name="TextureRect5" type="TextureRect" parent="UI/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_cta8h")
+texture = ExtResource("3_cfwxl")
 expand_mode = 2
 
+[connection signal="timeout" from="CharacterBody2D/hitCooldown" to="CharacterBody2D" method="_on_hit_cooldown_timeout"]
 [connection signal="timeout" from="dashtimer" to="CharacterBody2D" method="_on_dashtimer_timeout"]
 [connection signal="timeout" from="CanDashTimer" to="CharacterBody2D" method="_on_can_dash_timer_timeout"]

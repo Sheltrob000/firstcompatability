@@ -1,13 +1,27 @@
 extends CharacterBody2D
 
 
-const SPEED = 100000.0
-const JUMP_VELOCITY = -150000.0
-const DASH_SPEED = 500000
+const SPEED = 50000.0
+const JUMP_VELOCITY = -130000.0
+const DASH_SPEED = 300000
 var candoublejump = true
 var dashDirection = true
 var isdashing = false
 var candash = true
+var isHit = false
+var canBeHit = true
+
+
+
+func isCollidingWithEnemy():
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+
+		if collision.get_collider().name == "CharacterBody2D":
+			print("I collided with ", collision.get_collider().name)
+			isHit = true
+		else:
+			isHit = false
 
 
 func dash(direction :int):
@@ -52,6 +66,13 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("dash"):
 		dash(direction)
 
+
+	if isHit and canBeHit:
+		velocity.y += -100000 * delta
+		canBeHit = false
+		$hitCooldown.start()
+
+	isCollidingWithEnemy()
 	move_and_slide()
 
 
@@ -62,3 +83,7 @@ func _on_dashtimer_timeout() -> void:
 
 func _on_can_dash_timer_timeout() -> void:
 	candash = true
+
+
+func _on_hit_cooldown_timeout() -> void:
+	canBeHit = true

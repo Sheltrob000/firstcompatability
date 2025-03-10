@@ -1,0 +1,113 @@
+[gd_scene load_steps=8 format=3 uid="uid://xjr5x02levcr"]
+
+[ext_resource type="Texture2D" uid="uid://bq7srxqn8d0mi" path="res://assets/backgtound.jpg" id="1_2xahi"]
+[ext_resource type="PackedScene" uid="uid://4rke34waufhs" path="res://player_no_limit.tscn" id="1_hihn4"]
+[ext_resource type="Texture2D" uid="uid://bx54gdekv6ux4" path="res://assets/icon.svg" id="2_5aexk"]
+[ext_resource type="PackedScene" uid="uid://tihqd1eit1kq" path="res://platform.tscn" id="3_t13cl"]
+[ext_resource type="PackedScene" uid="uid://dn7jm73ai5osl" path="res://enemy.tscn" id="4_pcu53"]
+[ext_resource type="PackedScene" uid="uid://behvwwlfltoy0" path="res://double_platform.tscn" id="6_yg2t6"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_88k00"]
+distance = -776.0
+
+[node name="Level_Paralax" type="Node2D"]
+
+[node name="paralax stuff" type="Node2D" parent="."]
+
+[node name="Background" type="Parallax2D" parent="paralax stuff"]
+scroll_scale = Vector2(0.3, 1)
+repeat_size = Vector2(6000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="paralax stuff/Background"]
+scale = Vector2(10, 10)
+texture = ExtResource("1_2xahi")
+
+[node name="floor" type="Parallax2D" parent="paralax stuff"]
+repeat_size = Vector2(5000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="paralax stuff/floor"]
+position = Vector2(1264, 1280)
+scale = Vector2(41.25, 7.875)
+texture = ExtResource("2_5aexk")
+
+[node name="floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+shape = SubResource("WorldBoundaryShape2D_88k00")
+
+[node name="platforms" type="Node2D" parent="."]
+position = Vector2(-40, 64)
+
+[node name="platform" parent="platforms" instance=ExtResource("3_t13cl")]
+position = Vector2(-1280, 416)
+
+[node name="platform2" parent="platforms" instance=ExtResource("3_t13cl")]
+position = Vector2(-1064, 416)
+
+[node name="platform3" parent="platforms" instance=ExtResource("3_t13cl")]
+position = Vector2(-848, 416)
+
+[node name="platform4" parent="platforms" instance=ExtResource("3_t13cl")]
+position = Vector2(-632, 416)
+
+[node name="platform5" parent="platforms" instance=ExtResource("3_t13cl")]
+position = Vector2(-104, 224)
+
+[node name="platform6" parent="platforms" instance=ExtResource("3_t13cl")]
+position = Vector2(111, 224)
+
+[node name="platform7" parent="platforms" instance=ExtResource("3_t13cl")]
+position = Vector2(327, 224)
+
+[node name="platform8" parent="platforms" instance=ExtResource("3_t13cl")]
+position = Vector2(-1064, 32)
+
+[node name="platform9" parent="platforms" instance=ExtResource("3_t13cl")]
+position = Vector2(-856, 32)
+
+[node name="platform10" parent="platforms" instance=ExtResource("3_t13cl")]
+position = Vector2(-520, -512)
+
+[node name="platform11" parent="platforms" instance=ExtResource("3_t13cl")]
+position = Vector2(-304, -512)
+
+[node name="platform12" parent="platforms" instance=ExtResource("3_t13cl")]
+position = Vector2(440, -256)
+
+[node name="platform13" parent="platforms" instance=ExtResource("3_t13cl")]
+position = Vector2(655, -256)
+
+[node name="DoublePlatform" parent="platforms" instance=ExtResource("6_yg2t6")]
+position = Vector2(1064, 16)
+
+[node name="DoublePlatform2" parent="platforms" instance=ExtResource("6_yg2t6")]
+position = Vector2(1400, -544)
+
+[node name="DoublePlatform3" parent="platforms" instance=ExtResource("6_yg2t6")]
+position = Vector2(-1800, -416)
+
+[node name="DoublePlatform4" parent="platforms" instance=ExtResource("6_yg2t6")]
+position = Vector2(-1336, -1120)
+
+[node name="DoublePlatform5" parent="platforms" instance=ExtResource("6_yg2t6")]
+position = Vector2(-906, -1120)
+
+[node name="playerNoLimit" parent="." instance=ExtResource("1_hihn4")]
+position = Vector2(-288, 704)
+
+[node name="enemys" type="Node2D" parent="."]
+
+[node name="enemy" parent="enemys" instance=ExtResource("4_pcu53")]
+position = Vector2(-648, 376)
+
+[node name="enemy2" parent="enemys" instance=ExtResource("4_pcu53")]
+position = Vector2(-1328, -1200)
+
+[node name="enemy3" parent="enemys" instance=ExtResource("4_pcu53")]
+position = Vector2(-784, -1232)
+
+[node name="enemy4" parent="enemys" instance=ExtResource("4_pcu53")]
+position = Vector2(576, -352)
+
+[node name="enemy5" parent="enemys" instance=ExtResource("4_pcu53")]
+position = Vector2(-912, -64)
